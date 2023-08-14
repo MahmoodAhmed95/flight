@@ -1,0 +1,74 @@
+<h1>Flights Details</h1>
+
+<%- include('../partials/header') %>
+
+    <h2>Flights List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Airline</th>
+                <th>Airport</th>
+                <th>Flight Number</th>
+                <th>Departs</th>
+                <th>Destination</th>
+                <th>Ticket</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= flight.Airline %>
+                </td>
+                <td>
+                    <%= flight.Airport %>
+                </td>
+                <td>
+                    <%= flight.FlightNo %>
+                </td>
+                <td>
+                    <%= flight.Departs%>
+                </td>
+                <td>
+                    <% if (flight.Destination.length>= 0) { %>
+                        <% flight.Destination.forEach(d=> { %>
+                            Airport Des: <%= d.Airport %><br />
+                                Arrival Time: <%= d.Arrival %>
+                                    <% }) %>
+                                        <% } else { %>
+                <td>hh</td>
+                <% } %>
+
+                    </td>
+
+                    <td>
+                        <% if (flight.Ticket.length>= 0) { %>
+                            <% flight.Ticket.forEach(t=> { %>
+                                Price: <%= t.Price %> Seat: <%= t.Seat %>
+                                        <% }) %>
+                                            <% } else { %>
+                    <td>hh</td>
+                    <% } %>
+                        </td>
+            </tr>
+        </tbody>
+    </table><br>
+    <form action="/flights/<%= flight._id %>/addDestination" method="post">
+        <label>Destination:
+            <select name="Airport">
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN">DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+        </label><br>
+        <label>Arrival:
+            <input type="date" name="Arrival">
+        </label><br>
+
+        <button type="submit">Add Destination</button>
+        <a href="/flights/<%=flight._id%>/newTicket">Add New Ticket</a>
+    </form>
+
+
+    <%- include('../partials/header') %>

@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+
+  <h2>Flights List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Airline</th>
+        <th>Airport</th>
+        <th>Flight Number</th>
+        <th>Departs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Write the line of EJS to iterate over movies using forEach -->
+      <% flights.forEach(function(m) { %>
+        <tr>
+          <td>
+            <%= m.Airline %>
+          </td>
+          <td>
+            <%= m.Airport %>
+          </td>
+          <td>
+            <%= m.FlightNo %>
+          </td>
+          <td>
+            <%= m.Departs%>
+          </td>
+          <!-- finish the ternary expression to display ' Yes' or 'Nope' -->
+          <td>
+            <!-- <a href="/flights/<%= m._id %>">Details</a> -->
+          </td>
+        </tr>
+        <!-- Close the forEach using EJS here -->
+        <% }); %>
+    </tbody>
+  </table>
+
+  <%- include('../partials/header') %>

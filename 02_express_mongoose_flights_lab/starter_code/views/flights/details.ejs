@@ -1,0 +1,58 @@
+<h1>Flights Details</h1>
+
+<%- include('../partials/header') %>
+
+    <h2>Flights List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Airline</th>
+                <th>Airport</th>
+                <th>Flight Number</th>
+                <th>Departs</th>
+                <th>Destination</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Write the line of EJS to iterate over movies using forEach -->
+            <% flights.forEach(function(m) { %>
+                <tr>
+                    <td>
+                        <%= m.Airline %>
+                    </td>
+                    <td>
+                        <%= m.Airport %>
+                    </td>
+                    <td>
+                        <%= m.FlightNo %>
+                    </td>
+                    <td>
+                        <%= m.Departs%>
+                    </td>
+                    <!-- finish the ternary expression to display ' Yes' or 'Nope' -->
+                    <td>
+                        <%= m.Destinaion %>
+                    </td>
+                </tr>
+                <!-- Close the forEach using EJS here -->
+                <% }); %>
+        </tbody>
+    </table><br>
+    <form action="/flights/<%= m._id  %>" method="post">
+        <label>Destination:
+            <select name="Destination">
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN">DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+        </label><br>
+        <label>Arrival:
+            <input type="date" name="Departs">
+        </label><br>
+
+        <button type="submit">Add Destination</button>
+    </form>
+
+    <%- include('../partials/header') %>
